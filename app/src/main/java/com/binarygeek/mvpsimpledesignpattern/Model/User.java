@@ -5,7 +5,7 @@ import android.util.Patterns;
 
 public class User implements IUser {
 
-    private String email,password;
+    private String email, password;
 
     public User(String email, String password) {
         this.email = email;
@@ -23,9 +23,13 @@ public class User implements IUser {
     }
 
     @Override
-    public boolean isValidData() {
-        return !TextUtils.isEmpty(getEmail())&&
-                Patterns.EMAIL_ADDRESS.matcher(getEmail()).matches()&&
-                getPassword().length()>6;
+    public int isValidData() {
+        if (TextUtils.isEmpty(getEmail()))
+            return 0;
+        if (!Patterns.EMAIL_ADDRESS.matcher(getEmail()).matches())
+            return 1;
+        if (getPassword().length() < 6)
+            return 2;
+        return -1;
     }
 }

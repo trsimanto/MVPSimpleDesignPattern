@@ -13,11 +13,15 @@ IloginView loginView;
     @Override
     public void onLogin(String email, String password) {
         User user=new User(email,password);
-        boolean isLoginSuccess=user.isValidData();
+        int isLoginSuccess=user.isValidData();
 
-        if (isLoginSuccess)
-            loginView.onLoginResult("Login Success");
+        if (isLoginSuccess==0)
+            loginView.onLoginResult("Email is required");
+        else if (isLoginSuccess==1)
+            loginView.onLoginResult("Email is invalid");
+        else if (isLoginSuccess==2)
+            loginView.onLoginResult("Password invalid");
         else
-            loginView.onLoginResult("Login error");
+            loginView.onLoginResult("Login Success");
     }
 }
