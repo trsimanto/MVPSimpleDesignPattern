@@ -16,12 +16,12 @@ IloginView loginView;
         int isLoginSuccess=user.isValidData();
 
         if (isLoginSuccess==0)
-            loginView.onLoginResult("Email is required");
+            loginView.onLoginError("Email is required");
         else if (isLoginSuccess==1)
-            loginView.onLoginResult("Email is invalid");
+            loginView.onLoginWarning("Email is invalid");
         else if (isLoginSuccess==2)
-            loginView.onLoginResult("Password invalid");
+            loginView.onLoginError("Password invalid");
         else
-            loginView.onLoginResult("Login Success");
+            loginView.onLoginSuccess("Login Success");
     }
 }

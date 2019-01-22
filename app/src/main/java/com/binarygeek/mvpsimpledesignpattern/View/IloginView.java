@@ -1,5 +1,7 @@
 package com.binarygeek.mvpsimpledesignpattern.View;
 
 public interface IloginView {
-    void onLoginResult(String message);
+    void onLoginSuccess(String message);
+    void onLoginError(String message);
+    void onLoginWarning(String message);
 }

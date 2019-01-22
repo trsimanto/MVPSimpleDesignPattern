@@ -11,6 +11,8 @@ import com.binarygeek.mvpsimpledesignpattern.Presenter.ILoginPresenter;
 import com.binarygeek.mvpsimpledesignpattern.Presenter.LoginPresenter;
 import com.binarygeek.mvpsimpledesignpattern.View.IloginView;
 
+import es.dmoral.toasty.Toasty;
+
 public class MainActivity extends AppCompatActivity implements IloginView {
 
     EditText edt_email, edt_password;
@@ -38,8 +40,19 @@ public class MainActivity extends AppCompatActivity implements IloginView {
         });
     }
 
+
     @Override
-    public void onLoginResult(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    public void onLoginSuccess(String message) {
+        Toasty.success(this, message, Toast.LENGTH_SHORT, true).show();
+    }
+
+    @Override
+    public void onLoginError(String message) {
+        Toasty.error(this, message, Toast.LENGTH_SHORT, true).show();
+    }
+
+    @Override
+    public void onLoginWarning(String message) {
+        Toasty.warning(this, message, Toast.LENGTH_SHORT, true).show();
     }
 }
